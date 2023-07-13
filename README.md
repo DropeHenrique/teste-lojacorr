@@ -11,13 +11,53 @@ Siga as etapas abaixo para configurar e executar o projeto em seu ambiente local
 * PHP (versão 7.4 ou superior) instalado em seu ambiente.
 * Composer instalado em seu ambiente.
 * Servidor de banco de dados (por exemplo, MySQL) configurado e em execução.
+* Docker instalado em seu ambiente.
 
 
 ## Clonar o repositório
 
-`git clone https://github.com/DropeHenrique/teste-lojacorr.git`
+git clone https://github.com/DropeHenrique/teste-lojacorr.git`
 
 `cd teste-lojacorr`
+
+## Configurar o ambiente Docker
+
+
+*Renomeie o arquivo .env.example para .env.
+
+*Abra o arquivo .env e configure as seguintes variáveis de ambiente para corresponder às suas configurações desejadas:
+
+`DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=nome_do_banco_de_dados
+DB_USERNAME=nome_de_usuário_do_banco_de_dados
+DB_PASSWORD=senha_do_banco_de_dados`
+
+Substitua nome_do_banco_de_dados, nome_de_usuário_do_banco_de_dados e senha_do_banco_de_dados pelos seus valores de configuração.
+
+## Iniciar o ambiente Docker
+
+`docker-compose up -d --build`
+
+Isso criará e iniciará os containers Docker necessários para o projeto Laravel, incluindo o servidor web, o banco de dados e outros serviços.
+
+
+## Instalar dependências do Laravel(Em caso de uso do Docker)
+
+`docker-compose exec app composer install`
+
+## Executar migrações(Em caso de uso do Docker)
+
+`docker-compose exec app php artisan migrate`
+
+##Gerar chave de aplicativo(Em caso de uso do Docker)
+
+`docker-compose exec app php artisan key:generate`
+
+
+
+# Em caso de uso banco Local:
 
 ## Instalar dependências
 
